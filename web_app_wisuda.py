@@ -359,7 +359,7 @@ def generate_pdf(keyword, results, found):
         # Ambil nilai 'Waktu Bayar' dari row
         waktu_bayar = str(row.get('Waktu Bayar', ''))  # Mendapatkan nilai, default ke string kosong jika None
 
-        print('waktu bayar:', waktu_bayar)
+        # print('waktu bayar:', waktu_bayar)
 
         if waktu_bayar is not None and waktu_bayar.strip():  # Jika waktu_bayar tidak kosong
             # Konversi string tanggal ke objek datetime
