@@ -235,3 +235,48 @@
 2023-10-13 20:53:11,213 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
 2023-10-13 20:53:11,386 - 127.0.0.1 - - [13/Oct/2023 20:53:11] "GET /search?nim=182010042 HTTP/1.1" 200 -
 2023-10-13 20:53:11,703 - 127.0.0.1 - - [13/Oct/2023 20:53:11] "GET /download?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 11:45:05,811 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8001
+2023-10-14 11:45:05,811 - [33mPress CTRL+C to quit[0m
+2023-10-14 11:45:05,815 -  * Restarting with stat
+2023-10-14 11:45:06,405 -  * Debugger is active!
+2023-10-14 11:45:06,408 -  * Debugger PIN: 382-815-077
+2023-10-14 11:49:18,020 - No entries found for the keyword: '1'.
+2023-10-14 11:49:18,020 - 127.0.0.1 - - [14/Oct/2023 11:49:18] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 11:50:24,079 - No entries found for the keyword: '1'.
+2023-10-14 11:50:24,080 - 127.0.0.1 - - [14/Oct/2023 11:50:24] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 11:50:43,056 - No entries found for the keyword: '1'.
+2023-10-14 11:50:43,057 - 127.0.0.1 - - [14/Oct/2023 11:50:43] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 11:53:13,752 - No entries found for the keyword: '1'.
+2023-10-14 11:53:13,753 - 127.0.0.1 - - [14/Oct/2023 11:53:13] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 11:53:58,432 - No entries found for the keyword: '1'.
+2023-10-14 11:53:58,432 - 127.0.0.1 - - [14/Oct/2023 11:53:58] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 11:57:04,763 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 11:57:04,946 - 127.0.0.1 - - [14/Oct/2023 11:57:04] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 11:57:12,344 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 11:57:12,520 - 127.0.0.1 - - [14/Oct/2023 11:57:12] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 11:57:12,844 - 127.0.0.1 - - [14/Oct/2023 11:57:12] "GET /download?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 11:59:30,631 - No entries found for the keyword: '1'.
+2023-10-14 11:59:30,632 - 127.0.0.1 - - [14/Oct/2023 11:59:30] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 12:01:24,973 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:01:25,149 - 127.0.0.1 - - [14/Oct/2023 12:01:25] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:02:06,715 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:02:06,891 - 127.0.0.1 - - [14/Oct/2023 12:02:06] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:02:29,368 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:02:29,545 - 127.0.0.1 - - [14/Oct/2023 12:02:29] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:02:36,543 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:02:36,720 - 127.0.0.1 - - [14/Oct/2023 12:02:36] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:02:41,263 - No entries found for the keyword: '1'.
+2023-10-14 12:02:41,264 - 127.0.0.1 - - [14/Oct/2023 12:02:41] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 12:04:58,519 - No entries found for the keyword: '1'.
+2023-10-14 12:04:58,520 - 127.0.0.1 - - [14/Oct/2023 12:04:58] "GET /search?nim=1 HTTP/1.1" 200 -
+2023-10-14 12:05:08,498 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:05:08,677 - 127.0.0.1 - - [14/Oct/2023 12:05:08] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:06:35,230 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:06:35,408 - 127.0.0.1 - - [14/Oct/2023 12:06:35] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:06:42,155 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:06:42,328 - 127.0.0.1 - - [14/Oct/2023 12:06:42] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:06:42,647 - 127.0.0.1 - - [14/Oct/2023 12:06:42] "GET /download?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:07:06,884 - Search for NIM 182010042 - Entry found: (7, 182010042, 'FEMMY RISMALA DEWI', 'S1-Administrasi Publik', 'FAKULTAS ILMU SOSIAL DAN ILMU POLITIK', 'XL', 'Lunas', datetime.datetime(2023, 10, 3, 14, 57, 34), '2021 Genap', 450, '#N/A', '#N/A', 'WISUDA GEL I T.A. 2023-2024')
+2023-10-14 12:07:07,059 - 127.0.0.1 - - [14/Oct/2023 12:07:07] "GET /search?nim=182010042 HTTP/1.1" 200 -
+2023-10-14 12:07:07,072 - 127.0.0.1 - - [14/Oct/2023 12:07:07] "GET /download?nim=182010042 HTTP/1.1" 200 -
