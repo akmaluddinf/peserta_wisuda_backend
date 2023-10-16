@@ -365,9 +365,11 @@ def generate_pdf(keyword, results, found):
             # Konversi string tanggal ke objek datetime
             try:
                 # Ubah format tanggal sesuai dengan format yang diberikan dari Google Sheets
+                # (SET DI GOOGLE SHEETS DENGAN FORMAT: (BULAN/TANGGAL/TAHUN JAM:MENIT:DETIK) CONTOH: 10/03/2023 14:57:34
                 # tanggal_datetime = datetime.strptime(str(waktu_bayar), "%m/%d/%Y %H:%M:%S") #Jika get dari data google sheets
 
                 # Ubah format tanggal sesuai dengan format yang diberikan dari file excel
+                #Format waktu di excel: (TAHUN-BULAN-TANGGAL JAM:MENIT:DETIK) CONTOH: 2023-10-03 14:57:34
                 tanggal_datetime = datetime.strptime(str(waktu_bayar), "%Y-%m-%d %H:%M:%S") #Jika get dari data file excel
 
                 # Set lokal ke Bahasa Indonesia
