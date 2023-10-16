@@ -6,6 +6,8 @@ from flask_cors import CORS
 import locale
 from datetime import datetime
 import logging
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 app = Flask(__name__)
 
@@ -18,6 +20,65 @@ LOG_FILE_PATH = "download_log.txt"  # Menambahkan path untuk file log
 # Konfigurasi logging
 logging.basicConfig(filename=LOG_FILE_PATH, level=logging.INFO, format='%(asctime)s - %(message)s')
 
+# Path ke file kredensial JSON yang telah diunduh
+credentials_path = 'minime-pro-01-f29431f9e490.json'
+
+# Otorisasi menggunakan kredensial
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name(credentials_path, scope)
+gc = gspread.authorize(credentials)
+
+
+# ID Google Sheet (dapat ditemukan di URL)
+sheet_id = '1_yQE7ys1_Jx3O0VmgHYzaLxHi-MwuUgIklgjmS0jjic'
+
+# Nama worksheet di Google Sheet
+worksheet_name = 'Master Wisuda 2324 G1'  # Ganti dengan nama worksheet Anda
+
+# Fungsi untuk membaca data dari Google Sheet
+def read_google_sheet():
+    try:
+        # Buka Google Sheet
+        worksheet = gc.open_by_key(sheet_id).worksheet(worksheet_name)
+
+        # Ambil semua nilai dari worksheet
+        values = worksheet.get_all_values()
+
+        # Header kolom dari baris pertama
+        header = values[0]
+        # print("Header kolom:", header)
+
+        # Buat DataFrame dari data
+        df = pd.DataFrame(values[1:], columns=header)
+
+        # Cetak beberapa baris data pertama
+        # print("Data pertama:")
+        # print(df.head())
+
+        return df
+
+    except Exception as e:
+        logging.error(f"Error reading Google Sheet: {e}")
+        return None
+
+# Fungsi untuk mencari data dari Google Sheet
+def search_google_sheet(keyword):
+    results = []
+
+    # Baca data dari Google Sheet
+    df = read_google_sheet()
+
+    if df is not None:
+        # Lakukan pencarian di DataFrame
+        filtered_df = df.loc[df['NIM'].str.lower() == keyword.lower()]
+
+        # Konversi hasil pencarian menjadi daftar baris
+        results = filtered_df.to_dict(orient='records')
+
+        # Log hasil pencarian
+        logging.info(f"Search for NIM {keyword} - Entries found: {len(results)}")
+
+    return results
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -58,7 +119,8 @@ def search():
         return response
     elif request.method == 'GET':
         keyword = request.args.get('nim')
-        results = search_excel(keyword)
+        # results = search_google_sheet(keyword) #Jika get data dari google sheet
+        results = search_excel(keyword) #Jika get data dari file excel
         found = False  # Inisialisasi variabel found di sini
 
         if results:
@@ -66,7 +128,8 @@ def search():
             unique_results = []
             seen_nims = set()
             for row in results:
-                nim = row[1]
+                # nim = row['NIM']  # jika get data dari google sheet
+                nim = row[1]  # jika get data dari file excel
                 if nim not in seen_nims:
                     unique_results.append({
                         "NIM": row[1],
@@ -78,6 +141,18 @@ def search():
                         "Mengisi Tracer Study": row[10],
                         "Status Tagihan Wisuda": row[6],
                         "Waktu Bayar": row[7]
+
+                        # Jika get data dari google sheet
+                        
+                        # "NIM": row['NIM'],
+                        # "Nama": row['NAMA MAHASISWA'],
+                        # "Fakultas": row['FAKULTAS'],
+                        # "Program Studi": row['PROGRAM STUDI'],
+                        # "Ukuran Almamater": row['UK. ALMAMATER'],
+                        # "Nomor Urut": row['NO. Kursi'],
+                        # "Mengisi Tracer Study": row['Tracer Study'],
+                        # "Status Tagihan Wisuda": row['STATUS TAGIHAN WISUDA'],
+                        # "Waktu Bayar": row['WAKTU BAYAR']
                     })
                     seen_nims.add(nim)
 
@@ -284,10 +359,16 @@ def generate_pdf(keyword, results, found):
         # Ambil nilai 'Waktu Bayar' dari row
         waktu_bayar = str(row.get('Waktu Bayar', ''))  # Mendapatkan nilai, default ke string kosong jika None
 
-        if waktu_bayar is not None:
+        print('waktu bayar:', waktu_bayar)
+
+        if waktu_bayar is not None and waktu_bayar.strip():  # Jika waktu_bayar tidak kosong
             # Konversi string tanggal ke objek datetime
             try:
-                tanggal_datetime = datetime.strptime(str(waktu_bayar), "%Y-%m-%d %H:%M:%S")
+                # Ubah format tanggal sesuai dengan format yang diberikan dari Google Sheets
+                # tanggal_datetime = datetime.strptime(str(waktu_bayar), "%m/%d/%Y %H:%M:%S") #Jika get dari data google sheets
+
+                # Ubah format tanggal sesuai dengan format yang diberikan dari file excel
+                tanggal_datetime = datetime.strptime(str(waktu_bayar), "%Y-%m-%d %H:%M:%S") #Jika get dari data file excel
 
                 # Set lokal ke Bahasa Indonesia
                 locale.setlocale(locale.LC_TIME, 'id_ID')
@@ -301,11 +382,9 @@ def generate_pdf(keyword, results, found):
                 # Tampilkan di PDF
                 pdf.cell(200 - col_width, 10, txt=text_to_display, ln=True)
             except ValueError as e:
-                pdf.set_font("Arial", size=11, style='B')  # Font size 11 dan bold
                 # Tampilkan pesan bahwa format tanggal tidak valid
                 pdf.cell(200 - col_width, 10, txt=": BELUM LUNAS", ln=True)
         else:
-            pdf.set_font("Arial", size=11, style='B')  # Font size 11 dan bold
             # Tampilkan pesan bahwa waktu bayar tidak tersedia
             pdf.cell(200 - col_width, 10, txt=": BELUM LUNAS", ln=True)
 
