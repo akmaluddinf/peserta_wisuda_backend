@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/search": {"origins": "http://localhost:8002"}})  # Sesuaikan dengan URL React Anda
 
-EXCEL_PATH = "wisudaformatpeserta.xlsx"
+EXCEL_PATH = "wisudafix.xlsx"
 PDF_PATH = "static/result.pdf"
 LOG_FILE_PATH = "download_log.txt"  # Menambahkan path untuk file log
 
@@ -136,11 +136,12 @@ def search():
                         "Nama": row[2],
                         "Fakultas": row[4],
                         "Program Studi": row[3],
-                        "Ukuran Almamater": row[5],
-                        "Nomor Urut": row[9],
-                        "Mengisi Tracer Study": row[10],
-                        "Status Tagihan Wisuda": row[6],
-                        "Waktu Bayar": row[7]
+                        "Ukuran Almamater": row[9],
+                        "Nomor Urut": row[11],
+                        "Mengisi Tracer Study": row[12],
+                        "Status Tagihan Wisuda": row[10],
+                        "Waktu Bayar": row[14],
+                        "Sesi Wisuda": row[16]
 
                         # Jika get data dari google sheet
                         
@@ -341,7 +342,15 @@ def generate_pdf(keyword, results, found):
         pdf.set_x(pdf.get_x() + indent)  # Geser kursor ke posisi indent
         # Mengisi kolom Lokasi Wisuda dengan lebar kolom yang sama
         pdf.cell(col_width, 10, txt="Waktu Pelaksanaan", align='L')
-        pdf.cell(200 - col_width, 10, txt=": " + "11 November 2023", ln=True)
+
+        sesi_wisuda = str(row.get('Sesi Wisuda', ''))
+        # Menentukan waktu pelaksanaan berdasarkan sesi
+        if sesi_wisuda == "Sesi 1":
+            waktu_pelaksanaan = "Sabtu, 11 November 2023, 08.00 - 11.00"
+        else:
+            waktu_pelaksanaan = "Sabtu, 11 November 2023, 14.00 s.d. Selesai"
+
+        pdf.cell(200 - col_width, 10, txt=": " + waktu_pelaksanaan, ln=True)
         #Mengurangi space beetween
         pdf.cell(200, -3, ln=True)
 
@@ -376,7 +385,7 @@ def generate_pdf(keyword, results, found):
                 locale.setlocale(locale.LC_TIME, 'id_ID')
 
                 # Format tanggal dalam Bahasa Indonesia
-                tanggal_format_indonesia = tanggal_datetime.strftime("%d %B %Y %H:%M:%S")
+                tanggal_format_indonesia = tanggal_datetime.strftime("%d %B %Y %H:%M")
 
                 # tampilkan tanggal
                 text_to_display = f": {tanggal_format_indonesia}"
