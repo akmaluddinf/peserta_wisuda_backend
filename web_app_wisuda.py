@@ -328,7 +328,7 @@ def generate_pdf(keyword, results, found):
         pdf.set_x(pdf.get_x() + indent)  # Geser kursor ke posisi indent
         # Mengisi kolom Sesi Wisuda dengan lebar kolom yang sama
         pdf.cell(col_width, 10, txt="Sesi Wisuda", align='L')
-        pdf.cell(200 - col_width, 10, txt=": " + "Sesi 1", ln=True)
+        pdf.cell(200 - col_width, 10, txt=": " + str(row['Sesi Wisuda']), ln=True)
         #Mengurangi space beetween
         pdf.cell(200, -3, ln=True)
 
