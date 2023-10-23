@@ -341,6 +341,13 @@ def generate_pdf(keyword, results, found):
 
         pdf.set_x(pdf.get_x() + indent)  # Geser kursor ke posisi indent
         # Mengisi kolom Lokasi Wisuda dengan lebar kolom yang sama
+        pdf.cell(col_width, 10, txt="Waktu Gladi Resik", align='L')
+        pdf.cell(200 - col_width, 10, txt=": " + "Jumat, 10 November 2023, 08.00 s.d. Selesai", ln=True)
+        #Mengurangi space beetween
+        pdf.cell(200, -3, ln=True)
+
+        pdf.set_x(pdf.get_x() + indent)  # Geser kursor ke posisi indent
+        # Mengisi kolom Lokasi Wisuda dengan lebar kolom yang sama
         pdf.cell(col_width, 10, txt="Waktu Pelaksanaan", align='L')
 
         sesi_wisuda = str(row.get('Sesi Wisuda', ''))
